@@ -25,7 +25,6 @@ def menu():
                     while asking == False:
                         point_of_departure = input(str("please enter a point of departure:   ")).upper()
                         destination_point = input(str("please enter destination point:  ")).upper()
-                        # ואלידאציות
                         read_func = fun.check_flightlines_status(point_of_departure, destination_point)
                         if read_func == False:
                             new_line_question = (input("Do you want to choose a new line? (y/n)"))
@@ -36,14 +35,8 @@ def menu():
                         elif read_func == True:
                             level_2 = fun.price_calculation()
                             if level_2 == True:
-                                level_3 = fun.add_flightline(point_of_departure, destination_point)
-                                if level_3 == True:
-                                    asking == True
-                                    exit()
-                                else:
-                                    print("error")
-                            else:
-                                return ("error")
+                                fun.add_flightline(point_of_departure, destination_point)
+
 
 
 

@@ -30,9 +30,6 @@ def File_existence_check():
             return False,exit()
     return True
 
-
-def price_calculation():
-    pass
   
 # A function that returns all airport details with prices
 def load_airport_bank():
