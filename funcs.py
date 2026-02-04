@@ -7,6 +7,13 @@ def load_budget():
         reader = f.read()
         return(int(reader))
 
+# פונקציה כניסה של מנהל
+def login_management(user, password, retorn_of_credentials):
+    for one_item in retorn_of_credentials:
+        if one_item[0] == user and one_item[1] == password:
+            return True
+        return False
+
 # recieves nothing returns matrix of file contents where each row is a list inside the matrix
 def load_credentials():
     with open('credentials.csv','r') as f:
