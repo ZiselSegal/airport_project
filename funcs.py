@@ -69,5 +69,19 @@ def add_flightline(departure_ap,destination_ap):
         json.dump(available_flights_lst,f)
         print(f'flightline: {departure_ap} to {destination_ap} registred sucssesfully')
 
-        
+#recieves 2 airports calculate price of line vs budget if budget is bigger change budget and returns true else returns false
+def price_calculation(departure_ap,destination_ap):
+    pricing_menu = load_airport_bank()
+    line_price = 0
+    for price in pricing_menu:
+        if price[0] == departure_ap or price[0] == destination_ap:
+            line_price += int(price[5])
+    budget = load_budget()
+    if budget >= line_price:
+        print(f'transaction completed new budget: {budget - line_price}')
+        with open('budget.txt','w') as f:
+            f.write(str(budget - line_price))
+        return True
+    print(f'insufficent balance for filghtline {departure_ap} to {destination_ap} price: {line_price} budget: {budget}')
+    return False
 
