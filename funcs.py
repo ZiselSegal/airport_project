@@ -78,10 +78,14 @@ def price_calculation(departure_ap,destination_ap):
             line_price += int(price[5])
     budget = load_budget()
     if budget >= line_price:
-        print(f'transaction completed new budget: {budget - line_price}')
-        with open('budget.txt','w') as f:
-            f.write(str(budget - line_price))
-        return True
+        confirmation = input(f'confirm purchase for {line_price} with budget of {budget}: y/n:')
+        if confirmation == 'y':
+            print(f'transaction completed new budget: {budget - line_price}')
+            with open('budget.txt','w') as f:
+                f.write(str(budget - line_price))
+            return True
+        else:
+            print('transaction cancelation completed')
     print(f'insufficent balance for filghtline {departure_ap} to {destination_ap} price: {line_price} budget: {budget}')
     return False
 
