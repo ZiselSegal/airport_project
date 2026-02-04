@@ -29,3 +29,8 @@ def File_existence_check():
             return False,exit()
     return True
 
+# A function that returns all airport details with prices
+def load_airport_bank():
+    with open('airport_entry_fee.csv','r') as f:
+        reader = csv.reader(f)
+        return list(reader)[1::]
