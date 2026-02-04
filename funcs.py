@@ -59,5 +59,15 @@ def check_flightlines_status(departure_ap,destination_ap):
         return False
     return True
 
+# recives 2 airports and writes them inside the avalable fllight filees returns nothing
+def add_flightline(departure_ap,destination_ap):
+    with open('available_flights.json','r+') as f:
+        flightline = {"origin_airport":departure_ap,"destination airport":destination_ap}
+        available_flights_lst = json.load(f)
+        available_flights_lst["available_lines"].append(flightline)
+        f.seek(0)
+        json.dump(available_flights_lst,f)
+        print(f'flightline: {departure_ap} to {destination_ap} registred sucssesfully')
+
         
 
