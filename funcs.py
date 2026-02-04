@@ -75,12 +75,13 @@ def price_calculation(departure_ap,destination_ap):
     line_price = 0
     for price in pricing_menu:
         if price[0] == departure_ap or price[0] == destination_ap:
-            line_price += price[6]
+            line_price += int(price[5])
     budget = load_budget()
     if budget >= line_price:
-        print('transaction completed')
+        print(f'transaction completed new budget: {budget - line_price}')
         with open('budget.txt','w') as f:
-            f.write(budget - line_price)
+            f.write(str(budget - line_price))
         return True
+    print(f'insufficent balance for filghtline {departure_ap} to {destination_ap} price: {line_price} budget: {budget}')
     return False
 
