@@ -16,8 +16,33 @@ def menu():
                 validation = fun.login_management(name,password,credentials)
                 if validation == False:
                     print('invalid login')
+            print("1. Add a new line\n"
+                  "2. ")
+            check = input('plz enter action number: ')
+            match check:
+                case '1':
+                    asking = False
+                    while asking == False:
+                        point_of_departure = input(str("please enter a point of departure:   ")).upper()
+                        destination_point = input(str("please enter destination point:  ")).upper()
+                        read_func = fun.check_flightlines_status(point_of_departure, destination_point)
+                        if read_func == False:
+                            new_line_question = (input("Do you want to choose a new line? (y/n)"))
+                            if new_line_question == "y":
+                                continue
+                            elif new_line_question == "n":
+                                return 
+                        elif read_func == True:
+                            level_2 = fun.price_calculation(point_of_departure, destination_point)
+                            return
+                            if level_2 == True:
+                                fun.add_flightline(point_of_departure, destination_point)
+
+
+
+
+
         case '2':
             pass
         case '3':
             exit()
-menu()
