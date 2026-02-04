@@ -43,6 +43,12 @@ def menu():
 
 
         case '2':
-            pass
+            print('1.buy ticket')
+            action = input('plz enter action number')
+            match action:
+                case '1':
+                    fun.show_available_flightlines()
+                    point_of_departure = input(str("please enter a point of departure:   ")).upper()
+                    destination_point = input(str("please enter destination point:  ")).upper()
         case '3':
             exit()
