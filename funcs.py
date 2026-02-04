@@ -13,7 +13,7 @@ def load_credentials():
         reader = csv.reader(f)
         return list(reader)[1::]
 
-
+# Function that checks if all files exist
 def File_existence_check():
     files_to_check = ['airport_entry_fee.csv','available_flights.json','budget.txt','continents_pricing.csv','credentials.csv','funcs.py','main.py','menu.py']
     for file in files_to_check:
@@ -22,3 +22,8 @@ def File_existence_check():
             return False,exit()
     return True
 
+# A function that returns all airport details with prices
+def load_airport_bank():
+    with open('airport_entry_fee.csv','r') as f:
+        reader = csv.reader(f)
+        return list(reader)[1::]
