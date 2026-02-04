@@ -19,7 +19,7 @@ def menu():
             print("1. Add a new line\n"
                   "2. ")
             check = input('plz enter action number: ')
-            match action:
+            match check:
                 case '1':
                     asking = False
                     while asking == False:
@@ -38,8 +38,8 @@ def menu():
                             if level_2 == True:
                                 level_3 = fun.add_flightline(point_of_departure, destination_point)
                                 if level_3 == True:
-                                    print("New flight route successfully added!!!")
                                     asking == True
+                                    exit()
                                 else:
                                     print("error")
                             else:
