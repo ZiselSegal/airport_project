@@ -1,0 +1,82 @@
+airport_code,airport_name,city,state_or_region,continent,entry_fee_usd
+JFK,John F Kennedy International Airport,New York,New York,North America,5200
+LAX,Los Angeles International Airport,Los Angeles,California,North America,6100
+ORD,Chicago O Hare International Airport,Chicago,Illinois,North America,4800
+DFW,Dallas Fort Worth International Airport,Dallas,Texas,North America,4500
+DEN,Denver International Airport,Denver,Colorado,North America,4700
+ATL,Hartsfield Jackson Atlanta International Airport,Atlanta,Georgia,North America,5500
+SEA,Seattle Tacoma International Airport,Seattle,Washington,North America,4600
+MIA,Miami International Airport,Miami,Florida,North America,4900
+BOS,Logan International Airport,Boston,Massachusetts,North America,4400
+PHX,Phoenix Sky Harbor International Airport,Phoenix,Arizona,North America,4300
+YYZ,Toronto Pearson International Airport,Toronto,Ontario,North America,4300
+YVR,Vancouver International Airport,Vancouver,British Columbia,North America,4200
+YUL,Montreal Trudeau International Airport,Montreal,Quebec,North America,4100
+MEX,Mexico City International Airport,Mexico City,Mexico City,North America,4000
+CUN,Cancun International Airport,Cancun,Quintana Roo,North America,3900
+GRU,Sao Paulo Guarulhos International Airport,Sao Paulo,Sao Paulo,South America,3900
+EZE,Ministro Pistarini International Airport,Buenos Aires,Buenos Aires,South America,3600
+BOG,El Dorado International Airport,Bogota,Cundinamarca,South America,3200
+SCL,Arturo Merino Benitez International Airport,Santiago,Santiago Metropolitan,South America,3400
+LIM,Jorge Chavez International Airport,Lima,Lima Region,South America,3000
+GIG,Rio de Janeiro Galeao International Airport,Rio de Janeiro,Rio de Janeiro,South America,3500
+UIO,Mariscal Sucre International Airport,Quito,Pichincha,South America,3100
+CCS,Simon Bolivar International Airport,Caracas,La Guaira,South America,3300
+MVD,Carrasco International Airport,Montevideo,Montevideo,South America,2900
+ASU,Silvio Pettirossi International Airport,Asuncion,Central,South America,2800
+LPB,El Alto International Airport,La Paz,La Paz,South America,2700
+LHR,Heathrow Airport,London,England,Europe,7000
+CDG,Charles de Gaulle Airport,Paris,Ile de France,Europe,6800
+FRA,Frankfurt Airport,Frankfurt,Hesse,Europe,6400
+AMS,Schiphol Airport,Amsterdam,North Holland,Europe,6200
+MAD,Adolfo Suarez Madrid Barajas Airport,Madrid,Madrid,Europe,5900
+BCN,Barcelona El Prat Airport,Barcelona,Catalonia,Europe,5800
+FCO,Leonardo da Vinci Fiumicino Airport,Rome,Lazio,Europe,6000
+ZRH,Zurich Airport,Zurich,Zurich,Europe,6100
+VIE,Vienna International Airport,Vienna,Lower Austria,Europe,5700
+BRU,Brussels Airport,Brussels,Brussels,Europe,5600
+CPH,Copenhagen Airport,Copenhagen,Capital Region,Europe,5500
+OSL,Oslo Gardermoen Airport,Oslo,Viken,Europe,5400
+ARN,Stockholm Arlanda Airport,Stockholm,Stockholm,Europe,5300
+HEL,Helsinki Airport,Helsinki,Uusimaa,Europe,5200
+DUB,Dublin Airport,Dublin,Leinster,Europe,5100
+DXB,Dubai International Airport,Dubai,Dubai,Asia,7500
+HND,Tokyo Haneda Airport,Tokyo,Tokyo,Asia,7100
+NRT,Narita International Airport,Narita,Chiba,Asia,6900
+SIN,Singapore Changi Airport,Singapore,Singapore,Asia,6900
+ICN,Incheon International Airport,Seoul,Incheon,Asia,6700
+DEL,Indira Gandhi International Airport,Delhi,Delhi,Asia,5200
+BOM,Chhatrapati Shivaji Maharaj International Airport,Mumbai,Maharashtra,Asia,5100
+BLR,Kempegowda International Airport,Bangalore,Karnataka,Asia,5000
+DOH,Hamad International Airport,Doha,Doha,Asia,7200
+RUH,King Khalid International Airport,Riyadh,Riyadh,Asia,6000
+TLV,Ben Gurion Airport,Tel Aviv,Central District,Asia,6500
+PEK,Beijing Capital International Airport,Beijing,Beijing,Asia,6800
+PVG,Shanghai Pudong International Airport,Shanghai,Shanghai,Asia,6600
+HKG,Hong Kong International Airport,Hong Kong,Hong Kong,Asia,7000
+BKK,Suvarnabhumi Airport,Bangkok,Bangkok,Asia,6400
+JNB,O R Tambo International Airport,Johannesburg,Gauteng,Africa,4100
+CAI,Cairo International Airport,Cairo,Cairo Governorate,Africa,3800
+NBO,Jomo Kenyatta International Airport,Nairobi,Nairobi County,Africa,3600
+LOS,Murtala Muhammed International Airport,Lagos,Lagos State,Africa,3400
+CMN,Mohammed V International Airport,Casablanca,Casablanca Settat,Africa,3500
+ADD,Bole International Airport,Addis Ababa,Addis Ababa,Africa,3300
+DAR,Julius Nyerere International Airport,Dar es Salaam,Dar es Salaam,Africa,3200
+ACC,Kotoka International Airport,Accra,Greater Accra,Africa,3100
+ALG,Houari Boumediene Airport,Algiers,Algiers,Africa,3000
+TUN,Tunis Carthage International Airport,Tunis,Tunis,Africa,2900
+SYD,Sydney Kingsford Smith Airport,Sydney,New South Wales,Oceania,6600
+MEL,Melbourne Airport,Melbourne,Victoria,Oceania,6300
+AKL,Auckland Airport,Auckland,Auckland,Oceania,6000
+BNE,Brisbane Airport,Brisbane,Queensland,Oceania,5900
+PER,Perth Airport,Perth,Western Australia,Oceania,5700
+ADL,Adelaide Airport,Adelaide,South Australia,Oceania,5600
+CHC,Christchurch Airport,Christchurch,Canterbury,Oceania,5500
+WLG,Wellington Airport,Wellington,Wellington,Oceania,5400
+NAN,Nadi International Airport,Nadi,Western Division,Oceania,5300
+PPT,Faa a International Airport,Papeete,Tahiti,Oceania,5200
+MCM,McMurdo Station Airfield,McMurdo Station,Ross Dependency,Antarctica,8000
+NZSP,Amundsen Scott South Pole Station Airfield,South Pole,South Pole,Antarctica,8200
+TNM,Tenum Airport,Queen Maud Land,Queen Maud Land,Antarctica,7800
+RIL,Union Glacier Blue Ice Runway,Union Glacier,Ellsworth Land,Antarctica,7900
+PAT,Patriot Hills Airstrip,Patriot Hills,Ellsworth Mountains,Antarctica,7600

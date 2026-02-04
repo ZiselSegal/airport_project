@@ -1,0 +1,43 @@
+source_continent,target_continent,base_price_usd
+Africa,Antarctica,1450
+Africa,Asia,620
+Africa,Europe,340
+Africa,North America,820
+Africa,South America,980
+Africa,Oceania,1100
+Antarctica,Africa,1600
+Antarctica,Asia,2100
+Antarctica,Europe,1950
+Antarctica,North America,2300
+Antarctica,South America,2050
+Antarctica,Oceania,2400
+Asia,Africa,590
+Asia,Antarctica,2250
+Asia,Europe,410
+Asia,North America,780
+Asia,South America,1020
+Asia,Oceania,520
+Europe,Africa,360
+Europe,Antarctica,2050
+Europe,Asia,430
+Europe,North America,610
+Europe,South America,740
+Europe,Oceania,980
+North America,Africa,860
+North America,Antarctica,2500
+North America,Asia,820
+North America,Europe,640
+North America,South America,420
+North America,Oceania,1150
+South America,Africa,940
+South America,Antarctica,2150
+South America,Asia,1080
+South America,Europe,770
+South America,North America,390
+South America,Oceania,1320
+Oceania,Africa,1180
+Oceania,Antarctica,2350
+Oceania,Asia,540
+Oceania,Europe,1010
+Oceania,North America,1240
+Oceania,South America,1400
