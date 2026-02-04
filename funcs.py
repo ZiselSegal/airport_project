@@ -36,11 +36,13 @@ def load_airport_bank():
         reader = csv.reader(f)
         return list(reader)[1::]
 
+#recieves nothing return available flights file contents as a list of dicts
 def load_available_flights():
     with open('available_flights.json','r') as f:
         reader = json.load(f)
         return (reader["available_lines"])
 
+#recives 2 airport codes checks if they are available or owned return false if not avilable or owned else returns true
 def check_flightlines_status(departure_ap,destination_ap):
     airports = load_airport_bank()
     owned_lines = load_available_flights()
