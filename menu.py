@@ -31,9 +31,10 @@ def menu():
                             if new_line_question == "y":
                                 continue
                             elif new_line_question == "n":
-                                exit()
+                                return 
                         elif read_func == True:
-                            level_2 = fun.price_calculation()
+                            level_2 = fun.price_calculation(point_of_departure, destination_point)
+                            return
                             if level_2 == True:
                                 fun.add_flightline(point_of_departure, destination_point)
 
@@ -47,6 +48,4 @@ def menu():
             exit()
 
 
-
-
-
+menu()
