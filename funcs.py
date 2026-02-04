@@ -1,5 +1,6 @@
 import csv
 import os
+import json
 
 # recieves nothing returns contents of budget.txt file as string
 def load_budget():
@@ -34,3 +35,29 @@ def load_airport_bank():
     with open('airport_entry_fee.csv','r') as f:
         reader = csv.reader(f)
         return list(reader)[1::]
+
+#recieves nothing return available flights file contents as a list of dicts
+def load_available_flights():
+    with open('available_flights.json','r') as f:
+        reader = json.load(f)
+        return (reader["available_lines"])
+
+#recives 2 airport codes checks if they are available or owned return false if not avilable or owned else returns true
+def check_flightlines_status(departure_ap,destination_ap):
+    airports = load_airport_bank()
+    owned_lines = load_available_flights()
+    counter = 0
+    for line in owned_lines:
+        if line["origin_airport"] == departure_ap and line["destination airport"] == destination_ap:
+            print('line already owned')
+            return False
+    for airport in airports:
+        if airport[0] == departure_ap or airport[0] == destination_ap:
+            counter += 1
+    if counter != 2:
+        print('lines do not exist plz enter a valid flightline')
+        return False
+    return True
+
+        
+
