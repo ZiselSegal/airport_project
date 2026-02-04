@@ -29,3 +29,5 @@ def File_existence_check():
             return False,exit()
     return True
 
+def price_calculation():
+    pass
