@@ -46,6 +46,3 @@ def menu():
             pass
         case '3':
             exit()
-
-
-menu()
