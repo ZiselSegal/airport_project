@@ -34,14 +34,10 @@ def menu():
                                 return 
                         elif read_func == True:
                             level_2 = fun.price_calculation(point_of_departure, destination_point)
-                            return
+                            asking = True
                             if level_2 == True:
                                 fun.add_flightline(point_of_departure, destination_point)
-
-
-
-
-
+                                return
         case '2':
             pass
         case '3':

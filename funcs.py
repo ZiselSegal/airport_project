@@ -90,3 +90,6 @@ def price_calculation(departure_ap,destination_ap):
     print(f'insufficent balance for filghtline {departure_ap} to {destination_ap} price: {line_price} budget: {budget}')
     return False
 
+def Calculating_flight_prices():
+    with open("available_flights.json", "r")  as f:
+        json.load(f)
