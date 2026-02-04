@@ -16,11 +16,9 @@ def load_credentials():
 
 def File_existence_check():
     files_to_check = ['airport_entry_fee.csv','available_flights.json','budget.txt','continents_pricing.csv','credentials.csv','funcs.py','main.py','menu.py']
-
-
     for file in files_to_check:
         if not os.path.exists(file):
-            return False
-        else:
-            return True
+            print('Error, missing files')
+            return False,exit()
+    return True
 
