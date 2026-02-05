@@ -181,4 +181,4 @@ def answer_yes_or_no(printed):
         elif printed_of_user == "n":
             return False
         else:
-            printed_of_user = input(printed)
+            print(input("You have not entered a valid value. Please select (y/n): "))
