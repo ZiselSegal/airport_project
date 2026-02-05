@@ -152,3 +152,12 @@ def load_continents_pricing():
     with open('continents_pricing.csv','r') as f:
         read = csv.reader(f)
         return list(read)[1::]
+    
+# Loading card details file
+def load_tickets():
+        with open('tickets.csv','r') as f:
+            read = list(csv.reader(f))
+            if len(read) > 1:
+                return list(read)[1::]
+            return 'The list is empty. The list cannot be displayed.'
+
