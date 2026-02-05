@@ -152,4 +152,3 @@ def load_continents_pricing():
     with open('continents_pricing.csv','r') as f:
         read = csv.reader(f)
         return list(read)[1::]
-print(load_continents_pricing())
