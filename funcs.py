@@ -119,3 +119,12 @@ def create_ticket_ID():
         ID += random.choice(charecters)
     return ID
 
+def Calculating_flight_prices(point_of_departure, destination_point):
+    price = int(price_calculation(point_of_departure, destination_point))
+    ticket_price = float(price / 400)
+    continental_price = get_flight_continents(point_of_departure, destination_point)
+    price_by_continent = get_continent_price_addition(continental_price[0], continental_price[1])
+    ticket_price += price_by_continent
+    return ticket_price
+
+        
