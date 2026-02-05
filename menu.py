@@ -11,10 +11,15 @@ def main_menu():
             manager_menu()
         case '2':
             customer_menu()
+        case '3':
+            exit()
+        case _:
+            print('action not recognized plz enter one of the following actions')
+            main_menu()
 
 #handles manager UI recieves and returns nothing
 def manager_menu():
-    validation = fun.login_management(user='a',password=None,retorn_of_credentials=[])
+    validation = False
     while validation == False:
         name = input('Please enter user name: ')
         password = input('Please enter password: ')
@@ -52,6 +57,9 @@ def manager_menu():
             main_menu()
         case '3':
             exit()
+        case _:
+            print('action not recognized plz enter one of the following actions')
+            main_menu()
 
 # handler customer UI returns na drecieves nothing
 def customer_menu():
@@ -86,5 +94,8 @@ def customer_menu():
             main_menu()      
         case '3':
             exit()
+        case _:
+            print('action not recognized plz enter one of the following actions')
+            main_menu()
 main_menu()
 
