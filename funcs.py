@@ -90,3 +90,9 @@ def price_calculation(departure_ap,destination_ap):
     print(f'insufficent balance for filghtline {departure_ap} to {destination_ap} price: {line_price} budget: {budget}')
     return False
 
+# prints all available flight orderly recievs nothing and returns nothing
+def show_available_flightlines():
+    flightlines = load_available_flights()
+    for flightline in flightlines:
+        print(f'available flight: {flightline["origin_airport"]} to {flightline["destination airport"]}')
+
