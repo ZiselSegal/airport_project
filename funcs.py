@@ -147,3 +147,8 @@ def get_flight_continents(departure_ap,destination_ap):
             continents.append(airport[4])
     return continents
 
+# Adding a load function to the continents file
+def load_continents_pricing():
+    with open('continents_pricing.csv','r') as f:
+        read = csv.reader(f)
+        return list(read)[1::]
