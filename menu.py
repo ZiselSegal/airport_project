@@ -57,5 +57,3 @@ def menu():
                         exit()
         case '3':
             exit()
-
-menu()
