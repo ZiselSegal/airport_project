@@ -110,10 +110,18 @@ def show_available_flightlines():
     for flightline in flightlines:
         print(f'available flight: {flightline["origin_airport"]} to {flightline["destination airport"]}')
 
-#
+#creates random 8 char ticket id recieves nothing and returns ID
 def create_ticket_ID():
     charecters = string.printable
     ID = ''
     for num in range(8):
         ID += random.choice(charecters)
     return ID
+
+#function recieves
+def save_ticket_info(ID,price,origin_point,destination):
+    ticket_info = [ID,str(price),origin_point,destination]
+    with open('tickets.csv','a',newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(ticket_info)
+        print('ticket info saved')
