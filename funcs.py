@@ -8,7 +8,7 @@ import string
 def load_budget():
     with open('budget.txt','r') as f:
         reader = f.read()
-        return(int(reader))
+        return(float(reader))
 
 # פונקציה כניסה של מנהל
 def login_management(user, password, retorn_of_credentials):
@@ -96,6 +96,14 @@ def manager_transaction(line_price,departure_ap,destination_ap):
     print(f'insufficent balance for filghtline {departure_ap} to {destination_ap} price: {line_price} budget: {budget}')
     return False
 
+# The function receives an amount as a parameter and adds it to the airport's bank account.
+def add_to_budget(amount):
+    current_amount = load_budget()
+    new_amount = amount + current_amount
+    with open('budget.txt','w') as f:
+        f.write(f'{new_amount}')
+    print('The payment was made successfully')
+    
 # prints all available flight orderly recievs nothing and returns nothing
 def show_available_flightlines():
     flightlines = load_available_flights()
