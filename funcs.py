@@ -99,3 +99,9 @@ def add_to_budget(amount):
         f.write(f'{new_amount}')
     print('The payment was made successfully')
     
+# prints all available flight orderly recievs nothing and returns nothing
+def show_available_flightlines():
+    flightlines = load_available_flights()
+    for flightline in flightlines:
+        print(f'available flight: {flightline["origin_airport"]} to {flightline["destination airport"]}')
+
