@@ -162,6 +162,14 @@ def load_continents_pricing():
         read = csv.reader(f)
         return list(read)[1::]
     
+# Loading card details file
+def load_tickets():
+        with open('tickets.csv','r') as f:
+            read = list(csv.reader(f))
+            if len(read) > 1:
+                return list(read)[1::]
+            return 'The list is empty. The list cannot be displayed.'
+
 #function recieves 2 continents and returns the price addition for this flight
 def get_continent_price_addition(dep_continent,dest_continent):
     if dep_continent == dest_continent:
@@ -171,7 +179,6 @@ def get_continent_price_addition(dep_continent,dest_continent):
         for price in pricing:
             if price[0] == dep_continent and price[1] == dest_continent:
                 return int(price[2])
-            
 
 def answer_yes_or_no(printed):
     while True:
