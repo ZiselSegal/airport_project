@@ -136,4 +136,14 @@ def check_purchase_status(departure_ap,destination_ap):
     print('unavailable flight plz chose flight from the list')
     return False
 
+#function recieves 2 airports and check what continents their in and returns a list with both continents
+def get_flight_continents(departure_ap,destination_ap):
+    airports = load_airport_bank()
+    continents = []
+    for airport in airports:
+        if airport[0] == departure_ap:
+            continents.insert(0,airport[4])
+        elif airport[0] == destination_ap:
+            continents.append(airport[4])
+    return continents
 
