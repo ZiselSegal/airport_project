@@ -90,3 +90,12 @@ def price_calculation(departure_ap,destination_ap):
     print(f'insufficent balance for filghtline {departure_ap} to {destination_ap} price: {line_price} budget: {budget}')
     return False
 
+# The function receives an amount as a parameter and adds it to the airport's bank account.
+def add_to_budget(amount):
+    with open('budget.txt','r') as f:
+        current_amount = float(f.read())
+    new_amount = amount + current_amount
+    with open('budget.txt','w') as f:
+        f.write(f'{new_amount}')
+    print('The payment was made successfully')
+    
