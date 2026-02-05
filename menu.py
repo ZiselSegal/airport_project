@@ -28,7 +28,7 @@ def menu():
                         read_func = fun.check_flightlines_status(point_of_departure, destination_point)
                         if read_func == False:
                             new_line_question = "Do you want to choose a new line? (y/n)"
-                            yes_or_no = answer_yes_or_no(new_line_question)
+                            yes_or_no = fun.answer_yes_or_no(new_line_question)
                             if yes_or_no == True:
                                 continue
                             elif yes_or_no == False:
@@ -50,7 +50,7 @@ def menu():
                     ticket_price = float(fun.Calculating_flight_prices(point_of_departure, destination_point))
                     print(f"The ticket price for a flight from - {point_of_departure} to - {destination_point} is:  {ticket_price}")
                     purchase_confirmation = "Are you interested in buying? (y/n)"
-                    yes_or_no = answer_yes_or_no(purchase_confirmation)
+                    yes_or_no = fun.answer_yes_or_no(purchase_confirmation)
                     if purchase_confirmation == True:
                         fun.add_to_budget(ticket_price)
                     elif purchase_confirmation == False:

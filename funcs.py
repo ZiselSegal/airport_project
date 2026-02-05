@@ -196,3 +196,17 @@ def reducing_amount_from_budget(amount):
     new_budget = budget - float(amount)
     with open('budget.txt','w') as f:
         f.write(f'{new_budget}')
+
+
+# מחיקת כרטיס והחזרת הכסף ללקוח
+def deleting_a_card(id):
+    reader = load_tickets()
+    for item in reader:
+        if int(item[0]) == id:
+            price = float(item[1])
+            reducing_amount_from_budget(price)
+            print(f"your card {id} Successfully canceled!!\n"
+                  f"Credit to your account {price}\n"
+                  "Thank you and see you later!!!")
+
+
