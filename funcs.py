@@ -152,3 +152,13 @@ def load_continents_pricing():
     with open('continents_pricing.csv','r') as f:
         read = csv.reader(f)
         return list(read)[1::]
+    
+#function recieves 2 continents and returns the price addition for this flight
+def get_continent_price_addition(dep_continent,dest_continent):
+    if dep_continent == dest_continent:
+        return 0
+    else:
+        pricing = load_continents_pricing()
+        for price in pricing:
+            if price[0] == dep_continent and price[1] == dest_continent:
+                return int(price[2])
