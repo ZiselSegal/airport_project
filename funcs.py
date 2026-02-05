@@ -1,6 +1,8 @@
 import csv
 import os
 import json
+import random
+import string
 
 # recieves nothing returns contents of budget.txt file as string
 def load_budget():
@@ -100,3 +102,10 @@ def show_available_flightlines():
     for flightline in flightlines:
         print(f'available flight: {flightline["origin_airport"]} to {flightline["destination airport"]}')
 
+#
+def create_ticket_ID():
+    charecters = string.printable
+    ID = ''
+    for num in range(8):
+        ID += random.choice(charecters)
+    return ID
