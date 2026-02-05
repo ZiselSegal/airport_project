@@ -118,10 +118,22 @@ def create_ticket_ID():
         ID += random.choice(charecters)
     return ID
 
-#function recieves
+#function recieves ticket info (4 params) and wirte it into ticket info file returns nothing
 def save_ticket_info(ID,price,origin_point,destination):
     ticket_info = [ID,str(price),origin_point,destination]
     with open('tickets.csv','a',newline='') as f:
         writer = csv.writer(f)
         writer.writerow(ticket_info)
         print('ticket info saved')
+
+#function recieves 2 air ports and return true or false based if flight exists in availble flights file
+def check_purchase_status(departure_ap,destination_ap):
+    flights = load_available_flights()
+    for flight in flights:
+        if flight["origin_airport"] == departure_ap and flight["destination airport"] == destination_ap:
+            print('flight available')
+            return True
+    print('unavailable flight plz chose flight from the list')
+    return False
+
+
