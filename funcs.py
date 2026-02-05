@@ -78,7 +78,7 @@ def price_calculation(departure_ap,destination_ap):
             line_price += int(price[5])
     return line_price
 
-#function receives line price and calculate it vs budget and confirm the purchase returns true or false
+#function receives line price and 2 airports and calculates it vs budget and confirm the purchase returns true or false
 def manager_transaction(line_price,departure_ap,destination_ap):
     budget = load_budget()
     if budget >= line_price:
