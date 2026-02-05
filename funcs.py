@@ -6,7 +6,7 @@ import json
 def load_budget():
     with open('budget.txt','r') as f:
         reader = f.read()
-        return(int(reader))
+        return(float(reader))
 
 # פונקציה כניסה של מנהל
 def login_management(user, password, retorn_of_credentials):
@@ -92,8 +92,7 @@ def price_calculation(departure_ap,destination_ap):
 
 # The function receives an amount as a parameter and adds it to the airport's bank account.
 def add_to_budget(amount):
-    with open('budget.txt','r') as f:
-        current_amount = float(f.read())
+    current_amount = load_budget()
     new_amount = amount + current_amount
     with open('budget.txt','w') as f:
         f.write(f'{new_amount}')
