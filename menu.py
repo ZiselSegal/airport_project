@@ -5,20 +5,20 @@ def menu():
     print('1.manager\n'
           '2.customer\n'
           '3.exit')
-    action = input('plz enter action number: ')
+    action = input('Please enter an action number: ')
     match action:
         case '1':
             validation = fun.login_management(user='a',password=None,retorn_of_credentials=[])
             while validation == False:
-                name = input('plz enter user name: ')
-                password = input('plz enter password: ')
+                name = input('Please enter user name: ')
+                password = input('Please enter password: ')
                 credentials = fun.load_credentials()
                 validation = fun.login_management(name,password,credentials)
                 if validation == False:
                     print('invalid login')
             print("1. Add a new line\n"
                   "2. ")
-            check = input('plz enter action number: ')
+            check = input('Please enter an action number: ')
             match check:
                 case '1':
                     asking = False
@@ -40,7 +40,7 @@ def menu():
                                 return
         case '2':
             print('1.buy ticket')
-            action = input('plz enter action number')
+            action = input('Please enter an action number: ')
             match action:
                 case '1':
                     fun.show_available_flightlines()
@@ -56,3 +56,4 @@ def menu():
                     
         case '3':
             exit()
+

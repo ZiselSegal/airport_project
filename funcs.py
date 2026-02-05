@@ -25,7 +25,7 @@ def load_credentials():
 
 #checks if all files needed for project are present and close the program if not return true or false
 def File_existence_check():
-    files_to_check = ['airport_entry_fee.csv','available_flights.json','budget.txt','continents_pricing.csv','credentials.csv','funcs.py','main.py','menu.py']
+    files_to_check = ['airport_entry_fee.csv','available_flights.json','budget.txt','continents_pricing.csv','credentials.csv','funcs.py','main.py','menu.py','tickets.csv']
     for file in files_to_check:
         if not os.path.exists(file):
             print('Error, missing files')
@@ -111,7 +111,7 @@ def show_available_flightlines():
     for flightline in flightlines:
         print(f'available flight: {flightline["origin_airport"]} to {flightline["destination airport"]}')
 
-#
+#creates random 8 char ticket id recieves nothing and returns ID
 def create_ticket_ID():
     charecters = string.printable
     ID = ''
@@ -127,4 +127,47 @@ def Calculating_flight_prices(point_of_departure, destination_point):
     ticket_price += price_by_continent
     return ticket_price
 
-        
+#function recieves ticket info (4 params) and wirte it into ticket info file returns nothing
+def save_ticket_info(ID,price,origin_point,destination):
+    ticket_info = [ID,str(price),origin_point,destination]
+    with open('tickets.csv','a',newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(ticket_info)
+        print('ticket info saved')
+
+#function recieves 2 air ports and return true or false based if flight exists in availble flights file
+def check_purchase_status(departure_ap,destination_ap):
+    flights = load_available_flights()
+    for flight in flights:
+        if flight["origin_airport"] == departure_ap and flight["destination airport"] == destination_ap:
+            print('flight available')
+            return True
+    print('unavailable flight plz chose flight from the list')
+    return False
+
+#function recieves 2 airports and check what continents their in and returns a list with both continents
+def get_flight_continents(departure_ap,destination_ap):
+    airports = load_airport_bank()
+    continents = []
+    for airport in airports:
+        if airport[0] == departure_ap:
+            continents.insert(0,airport[4])
+        elif airport[0] == destination_ap:
+            continents.append(airport[4])
+    return continents
+
+# Adding a load function to the continents file
+def load_continents_pricing():
+    with open('continents_pricing.csv','r') as f:
+        read = csv.reader(f)
+        return list(read)[1::]
+    
+#function recieves 2 continents and returns the price addition for this flight
+def get_continent_price_addition(dep_continent,dest_continent):
+    if dep_continent == dest_continent:
+        return 0
+    else:
+        pricing = load_continents_pricing()
+        for price in pricing:
+            if price[0] == dep_continent and price[1] == dest_continent:
+                return int(price[2])
