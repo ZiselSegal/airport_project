@@ -96,6 +96,7 @@ def manager_transaction(line_price,departure_ap,destination_ap):
     print(f'insufficent balance for filghtline {departure_ap} to {destination_ap} price: {line_price} budget: {budget}')
     return False
 
+
 # The function receives an amount as a parameter and adds it to the airport's bank account.
 def add_to_budget(amount):
     current_amount = load_budget()
@@ -117,6 +118,14 @@ def create_ticket_ID():
     for num in range(8):
         ID += random.choice(charecters)
     return ID
+
+def Calculating_flight_prices(point_of_departure, destination_point):
+    price = price_calculation(point_of_departure, destination_point)
+    ticket_price = price / 400
+    continental_price = get_flight_continents(point_of_departure, destination_point)
+    price_by_continent = get_continent_price_addition(continental_price[0], continental_price[1])
+    ticket_price += price_by_continent
+    return ticket_price
 
 #function recieves ticket info (4 params) and wirte it into ticket info file returns nothing
 def save_ticket_info(ID,price,origin_point,destination):
@@ -161,3 +170,22 @@ def load_tickets():
                 return list(read)[1::]
             return 'The list is empty. The list cannot be displayed.'
 
+#function recieves 2 continents and returns the price addition for this flight
+def get_continent_price_addition(dep_continent,dest_continent):
+    if dep_continent == dest_continent:
+        return 0
+    else:
+        pricing = load_continents_pricing()
+        for price in pricing:
+            if price[0] == dep_continent and price[1] == dest_continent:
+                return int(price[2])
+
+def answer_yes_or_no(printed):
+    while True:
+        printed_of_user = input(printed)
+        if printed_of_user == "y":
+            return True
+        elif printed_of_user == "n":
+            return False
+        else:
+            print(input("You have not entered a valid value. Please select (y/n): "))
