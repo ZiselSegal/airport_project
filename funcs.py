@@ -169,6 +169,14 @@ def load_continents_pricing():
         read = csv.reader(f)
         return list(read)[1::]
     
+# Loading card details file
+def load_tickets():
+        with open('tickets.csv','r') as f:
+            read = list(csv.reader(f))
+            if len(read) > 1:
+                return list(read)[1::]
+            return 'The list is empty. The list cannot be displayed.'
+
 #function recieves 2 continents and returns the price addition for this flight
 def get_continent_price_addition(dep_continent,dest_continent):
     if dep_continent == dest_continent:
@@ -178,8 +186,8 @@ def get_continent_price_addition(dep_continent,dest_continent):
         for price in pricing:
             if price[0] == dep_continent and price[1] == dest_continent:
                 return int(price[2])
-            
-#check if user answer is yes or no returns true or false rcieves input message
+
+#validate user answer in menu recieves input question returns true or false
 def answer_yes_or_no(printed):
     while True:
         printed_of_user = input(printed)
@@ -189,3 +197,10 @@ def answer_yes_or_no(printed):
             return False
         else:
             print(input("You have not entered a valid value. Please select (y/n): "))
+
+# Budget subtraction function revieves amount to subtract and returns nothing
+def reducing_amount_from_budget(amount):
+    budget = load_budget()
+    new_budget = budget - float(amount)
+    with open('budget.txt','w') as f:
+        f.write(f'{new_budget}')

@@ -12,7 +12,7 @@ def main_menu():
         case '2':
             customer_menu()
 
-#
+#handles manager UI recieves and returns nothing
 def manager_menu():
     validation = fun.login_management(user='a',password=None,retorn_of_credentials=[])
     while validation == False:
@@ -53,7 +53,7 @@ def manager_menu():
         case '3':
             exit()
 
-#
+# handler customer UI returns na drecieves nothing
 def customer_menu():
     print('1.buy ticket\n'
           '2.return to main menu\n'
