@@ -25,7 +25,7 @@ def load_credentials():
 
 #checks if all files needed for project are present and close the program if not return true or false
 def File_existence_check():
-    files_to_check = ['airport_entry_fee.csv','available_flights.json','budget.txt','continents_pricing.csv','credentials.csv','funcs.py','main.py','menu.py']
+    files_to_check = ['airport_entry_fee.csv','available_flights.json','budget.txt','continents_pricing.csv','credentials.csv','funcs.py','main.py','menu.py','tickets.csv']
     for file in files_to_check:
         if not os.path.exists(file):
             print('Error, missing files')
