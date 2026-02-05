@@ -189,3 +189,10 @@ def answer_yes_or_no(printed):
             return False
         else:
             print(input("You have not entered a valid value. Please select (y/n): "))
+
+# Budget subtraction function
+def reducing_amount_from_budget(amount):
+    budget = load_budget()
+    new_budget = budget - float(amount)
+    with open('budget.txt','w') as f:
+        f.write(f'{new_budget}')
