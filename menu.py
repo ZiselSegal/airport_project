@@ -98,4 +98,3 @@ def customer_menu():
             print('action not recognized plz enter one of the following actions')
             main_menu()
 main_menu()
-
