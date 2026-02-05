@@ -34,13 +34,11 @@ def menu():
                                 return 
                         elif read_func == True:
                             level_2 = fun.price_calculation(point_of_departure, destination_point)
-                            return
-                            if level_2 == True:
+                            level_3 = fun.manager_transaction(level_2,point_of_departure,destination_point)
+                            if level_3 == True:
                                 fun.add_flightline(point_of_departure, destination_point)
-
-
-
-
+                                asking == True
+                            return
 
         case '2':
             print('1.buy ticket')
@@ -52,3 +50,5 @@ def menu():
                     destination_point = input(str("please enter destination point:  ")).upper()
         case '3':
             exit()
+
+menu()

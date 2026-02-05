@@ -30,7 +30,6 @@ def File_existence_check():
             return False,exit()
     return True
 
-  
 # A function that returns all airport details with prices
 def load_airport_bank():
     with open('airport_entry_fee.csv','r') as f:
@@ -70,13 +69,17 @@ def add_flightline(departure_ap,destination_ap):
         json.dump(available_flights_lst,f)
         print(f'flightline: {departure_ap} to {destination_ap} registred sucssesfully')
 
-#recieves 2 airports calculate price of line vs budget if budget is bigger change budget and returns true else returns false
+#recieves 2 airports calculate price of line returns the price
 def price_calculation(departure_ap,destination_ap):
     pricing_menu = load_airport_bank()
     line_price = 0
     for price in pricing_menu:
         if price[0] == departure_ap or price[0] == destination_ap:
             line_price += int(price[5])
+    return line_price
+
+#function receives line price and 2 airports and calculates it vs budget and confirm the purchase returns true or false
+def manager_transaction(line_price,departure_ap,destination_ap):
     budget = load_budget()
     if budget >= line_price:
         confirmation = input(f'confirm purchase for {line_price} with budget of {budget}: y/n:')
@@ -87,6 +90,7 @@ def price_calculation(departure_ap,destination_ap):
             return True
         else:
             print('transaction cancelation completed')
+            return False
     print(f'insufficent balance for filghtline {departure_ap} to {destination_ap} price: {line_price} budget: {budget}')
     return False
 
