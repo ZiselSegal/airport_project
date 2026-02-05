@@ -37,9 +37,7 @@ def menu():
                             level_3 = fun.manager_transaction(level_2,point_of_departure,destination_point)
                             if level_3 == True:
                                 fun.add_flightline(point_of_departure, destination_point)
-                                asking == True
-                            return
-
+                                return
         case '2':
             print('1.buy ticket')
             action = input('Please enter an action number: ')
@@ -55,5 +53,7 @@ def menu():
                         fun.add_to_budget(ticket_price)
                     elif purchase_confirmation == "n":
                         exit()
+                    
         case '3':
             exit()
+
