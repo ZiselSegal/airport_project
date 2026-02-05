@@ -193,6 +193,6 @@ def answer_yes_or_no(printed):
 # Budget subtraction function
 def reducing_amount_from_budget(amount):
     budget = load_budget()
-    new_budget = float(budget) - float(amount)
+    new_budget = budget - float(amount)
     with open('budget.txt','w') as f:
         f.write(f'{new_budget}')
