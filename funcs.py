@@ -171,3 +171,14 @@ def get_continent_price_addition(dep_continent,dest_continent):
         for price in pricing:
             if price[0] == dep_continent and price[1] == dest_continent:
                 return int(price[2])
+            
+
+def answer_yes_or_no(printed):
+    while True:
+        printed_of_user = input(printed)
+        if printed_of_user == "y":
+            return True
+        elif printed_of_user == "n":
+            return False
+        else:
+            printed_of_user = input(printed)

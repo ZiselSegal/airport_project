@@ -27,10 +27,11 @@ def menu():
                         destination_point = input(str("please enter destination point:  ")).upper()
                         read_func = fun.check_flightlines_status(point_of_departure, destination_point)
                         if read_func == False:
-                            new_line_question = (input("Do you want to choose a new line? (y/n)"))
-                            if new_line_question == "y":
+                            new_line_question = "Do you want to choose a new line? (y/n)"
+                            yes_or_no = answer_yes_or_no(new_line_question)
+                            if yes_or_no == True:
                                 continue
-                            elif new_line_question == "n":
+                            elif yes_or_no == False:
                                 return 
                         elif read_func == True:
                             level_2 = fun.price_calculation(point_of_departure, destination_point)
@@ -48,10 +49,11 @@ def menu():
                     destination_point = input(str("please enter destination point:  ")).upper()
                     ticket_price = float(fun.Calculating_flight_prices(point_of_departure, destination_point))
                     print(f"The ticket price for a flight from - {point_of_departure} to - {destination_point} is:  {ticket_price}")
-                    purchase_confirmation = input("Are you interested in buying? (y/n)")
-                    if purchase_confirmation == "y":
+                    purchase_confirmation = "Are you interested in buying? (y/n)"
+                    yes_or_no = answer_yes_or_no(purchase_confirmation)
+                    if purchase_confirmation == True:
                         fun.add_to_budget(ticket_price)
-                    elif purchase_confirmation == "n":
+                    elif purchase_confirmation == False:
                         exit()
                     
         case '3':
