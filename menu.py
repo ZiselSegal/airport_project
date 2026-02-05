@@ -46,7 +46,13 @@ def menu():
                     fun.show_available_flightlines()
                     point_of_departure = input(str("please enter a point of departure:   ")).upper()
                     destination_point = input(str("please enter destination point:  ")).upper()
-
+                    ticket_price = float(fun.Calculating_flight_prices(point_of_departure, destination_point))
+                    print(f"The ticket price for a flight from - {point_of_departure} to - {destination_point} is:  {ticket_price}")
+                    purchase_confirmation = input("Are you interested in buying? (y/n)")
+                    if purchase_confirmation == "y":
+                        fun.add_to_budget(ticket_price)
+                    elif purchase_confirmation == "n":
+                        exit()
                     
         case '3':
             exit()

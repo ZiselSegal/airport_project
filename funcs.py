@@ -1,12 +1,14 @@
 import csv
 import os
 import json
+import random
+import string
 
 # recieves nothing returns contents of budget.txt file as string
 def load_budget():
     with open('budget.txt','r') as f:
         reader = f.read()
-        return(int(reader))
+        return(float(reader))
 
 # פונקציה כניסה של מנהל
 def login_management(user, password, retorn_of_credentials):
@@ -30,7 +32,6 @@ def File_existence_check():
             return False,exit()
     return True
 
-  
 # A function that returns all airport details with prices
 def load_airport_bank():
     with open('airport_entry_fee.csv','r') as f:
@@ -70,13 +71,17 @@ def add_flightline(departure_ap,destination_ap):
         json.dump(available_flights_lst,f)
         print(f'flightline: {departure_ap} to {destination_ap} registred sucssesfully')
 
-#recieves 2 airports calculate price of line vs budget if budget is bigger change budget and returns true else returns false
+#recieves 2 airports calculate price of line returns the price
 def price_calculation(departure_ap,destination_ap):
     pricing_menu = load_airport_bank()
     line_price = 0
     for price in pricing_menu:
         if price[0] == departure_ap or price[0] == destination_ap:
             line_price += int(price[5])
+    return line_price
+
+#function receives line price and 2 airports and calculates it vs budget and confirm the purchase returns true or false
+def manager_transaction(line_price,departure_ap,destination_ap):
     budget = load_budget()
     if budget >= line_price:
         confirmation = input(f'confirm purchase for {line_price} with budget of {budget}: y/n:')
@@ -87,14 +92,30 @@ def price_calculation(departure_ap,destination_ap):
             return True
         else:
             print('transaction cancelation completed')
+            return False
     print(f'insufficent balance for filghtline {departure_ap} to {destination_ap} price: {line_price} budget: {budget}')
     return False
 
 
+# The function receives an amount as a parameter and adds it to the airport's bank account.
+def add_to_budget(amount):
+    current_amount = load_budget()
+    new_amount = amount + current_amount
+    with open('budget.txt','w') as f:
+        f.write(f'{new_amount}')
+    print('The payment was made successfully')
+    
+# prints all available flight orderly recievs nothing and returns nothing
+def show_available_flightlines():
+    flightlines = load_available_flights()
+    for flightline in flightlines:
+        print(f'available flight: {flightline["origin_airport"]} to {flightline["destination airport"]}')
 
-# # prints all available flight orderly recievs nothing and returns nothing
-# def show_available_flightlines():
-#     flightlines = load_available_flights()
-#     for flightline in flightlines:
-#         print(f'available flight: {flightline["origin_airport"]} to {flightline["destination airport"]}')
+#
+def create_ticket_ID():
+    charecters = string.printable
+    ID = ''
+    for num in range(8):
+        ID += random.choice(charecters)
+    return ID
 
