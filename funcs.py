@@ -84,13 +84,14 @@ def price_calculation(departure_ap,destination_ap):
 def manager_transaction(line_price,departure_ap,destination_ap):
     budget = load_budget()
     if budget >= line_price:
-        confirmation = input(f'confirm purchase for {line_price} with budget of {budget}: y/n:')
-        if confirmation == 'y':
+        question = f'confirm purchase for {line_price} with budget of {budget}: y/n:'
+        confirmation = answer_yes_or_no(question)
+        if confirmation == True:
             print(f'transaction completed new budget: {budget - line_price}')
             with open('budget.txt','w') as f:
                 f.write(str(budget - line_price))
             return True
-        else:
+        elif confirmation == False:
             print('transaction cancelation completed')
             return False
     print(f'insufficent balance for filghtline {departure_ap} to {destination_ap} price: {line_price} budget: {budget}')
@@ -116,9 +117,14 @@ def create_ticket_ID():
     charecters = string.printable
     ID = ''
     for num in range(8):
-        ID += random.choice(charecters)
+        char = random.choice(charecters)
+        if char == ',':
+            num -= 1
+            continue
+        ID += char
     return ID
 
+# recives 2 airpors and calculates flight price returns the price
 def Calculating_flight_prices(point_of_departure, destination_point):
     price = price_calculation(point_of_departure, destination_point)
     ticket_price = price / 400
@@ -133,7 +139,7 @@ def save_ticket_info(ID,price,origin_point,destination):
     with open('tickets.csv','a',newline='') as f:
         writer = csv.writer(f)
         writer.writerow(ticket_info)
-        print('ticket info saved')
+        print(f'ticket info saved. ticket ID: {ID}')
 
 #function recieves 2 air ports and return true or false based if flight exists in availble flights file
 def check_purchase_status(departure_ap,destination_ap):
@@ -143,6 +149,7 @@ def check_purchase_status(departure_ap,destination_ap):
             print('flight available')
             return True
     print('unavailable flight plz chose flight from the list')
+    show_available_flightlines()
     return False
 
 #function recieves 2 airports and check what continents their in and returns a list with both continents
@@ -172,7 +179,7 @@ def get_continent_price_addition(dep_continent,dest_continent):
             if price[0] == dep_continent and price[1] == dest_continent:
                 return int(price[2])
             
-
+#check if user answer is yes or no returns true or false rcieves input message
 def answer_yes_or_no(printed):
     while True:
         printed_of_user = input(printed)
