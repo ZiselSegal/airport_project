@@ -2,6 +2,9 @@ import funcs as fun
 
 #handles user UI and input logic recieves nothing and returns None
 def main_menu():
+    print('-------------------------------\n'
+          'Welcome to the airport website!\n' 
+          '-------------------------------')
     print('1.manager\n'
           '2.customer\n'
           '3.exit')
