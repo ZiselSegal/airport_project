@@ -50,7 +50,7 @@ def check_flightlines_status(departure_ap,destination_ap):
     owned_lines = load_available_flights()
     counter = 0
     for line in owned_lines:
-        if line["origin_airport"] == departure_ap and line["destination airport"] == destination_ap:
+        if line["origin_airport"] == departure_ap and line["destination airport"] == destination_ap or line["origin_airport"] == destination_ap and line["destination airport"] == departure_ap :
             print('line already owned')
             return False
     for airport in airports:
@@ -145,7 +145,7 @@ def check_purchase_status(departure_ap,destination_ap):
         print('no flighst are availble currently')
         return
     for flight in flights:
-        if flight["origin_airport"] == departure_ap and flight["destination airport"] == destination_ap:
+        if flight["origin_airport"] == departure_ap and flight["destination airport"] == destination_ap or flight["origin_airport"] == destination_ap and flight["destination airport"] == departure_ap:
             print('flight available')
             return True
     print('unavailable flight plz chose flight from the list')
