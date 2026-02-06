@@ -25,7 +25,7 @@ def load_credentials():
 
 #checks if all files needed for project are present and close the program if not return true or false
 def File_existence_check():
-    files_to_check = ['airport_entry_fee.csv','available_flights.json','budget.txt','continents_pricing.csv','credentials.csv','funcs.py','main.py','menu.py','tickets.csv']
+    files_to_check = ['airport_entry_fee.csv','available_flights.json','budget.txt','continents_pricing.csv','credentials.csv','funcs.py','main.py','menu.py','tickets.json']
     for file in files_to_check:
         if not os.path.exists(file):
             print('Error, missing files')
@@ -50,7 +50,7 @@ def check_flightlines_status(departure_ap,destination_ap):
     owned_lines = load_available_flights()
     counter = 0
     for line in owned_lines:
-        if line["origin_airport"] == departure_ap and line["destination airport"] == destination_ap:
+        if line["origin_airport"] == departure_ap and line["destination airport"] == destination_ap or line["origin_airport"] == destination_ap and line["destination airport"] == departure_ap :
             print('line already owned')
             return False
     for airport in airports:
@@ -97,7 +97,6 @@ def manager_transaction(line_price,departure_ap,destination_ap):
     print(f'insufficent balance for filghtline {departure_ap} to {destination_ap} price: {line_price} budget: {budget}')
     return False
 
-
 # The function receives an amount as a parameter and adds it to the airport's bank account.
 def add_to_budget(amount):
     current_amount = load_budget()
@@ -112,16 +111,12 @@ def show_available_flightlines():
     for flightline in flightlines:
         print(f'available flight: {flightline["origin_airport"]} to {flightline["destination airport"]}')
 
-#creates random 8 char ticket id recieves nothing and returns ID
+# function recieves nothing and returns random 8 char ticket ID
 def create_ticket_ID():
     charecters = string.printable
     ID = ''
     for num in range(8):
-        char = random.choice(charecters)
-        if char == ',':
-            num -= 1
-            continue
-        ID += char
+        ID += random.choice(charecters)
     return ID
 
 # recives 2 airpors and calculates flight price returns the price
@@ -135,21 +130,25 @@ def Calculating_flight_prices(point_of_departure, destination_point):
 
 #function recieves ticket info (4 params) and wirte it into ticket info file returns nothing
 def save_ticket_info(ID,price,origin_point,destination):
-    ticket_info = [ID,str(price),origin_point,destination]
-    with open('tickets.csv','a',newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow(ticket_info)
+    ticket_info = {"ID" : ID,"price" : str(price),"origin_point" : origin_point,"destination" : destination}
+    with open('tickets.json','r+') as f:
+        reader = json.load(f)
+        reader["tickets"].append(ticket_info)
+        f.seek(0)
+        json.dump(reader,f)
         print(f'ticket info saved. ticket ID: {ID}')
 
 #function recieves 2 air ports and return true or false based if flight exists in availble flights file
 def check_purchase_status(departure_ap,destination_ap):
     flights = load_available_flights()
+    if len(flights) == 0:
+        print('no flighst are availble currently')
+        return
     for flight in flights:
-        if flight["origin_airport"] == departure_ap and flight["destination airport"] == destination_ap:
+        if flight["origin_airport"] == departure_ap and flight["destination airport"] == destination_ap or flight["origin_airport"] == destination_ap and flight["destination airport"] == departure_ap:
             print('flight available')
             return True
     print('unavailable flight plz chose flight from the list')
-    show_available_flightlines()
     return False
 
 #function recieves 2 airports and check what continents their in and returns a list with both continents
@@ -169,13 +168,11 @@ def load_continents_pricing():
         read = csv.reader(f)
         return list(read)[1::]
     
-# Loading card details file
+#function recieves nothing and returns a list with all tickets info as dicts
 def load_tickets():
-        with open('tickets.csv','r') as f:
-            read = list(csv.reader(f))
-            if len(read) > 1:
-                return list(read)[1::]
-            return 'The list is empty. The list cannot be displayed.'
+    with open('tickets.json','r') as f:
+        reader = json.load(f)
+        return (reader["tickets"])
 
 #function recieves 2 continents and returns the price addition for this flight
 def get_continent_price_addition(dep_continent,dest_continent):
@@ -205,16 +202,28 @@ def reducing_amount_from_budget(amount):
     with open('budget.txt','w') as f:
         f.write(f'{new_budget}')
 
+# function recieves 
+def removing_ticket_from_tickets(ID):
+        tickets = load_tickets()
+        for iticket,ticket in enumerate(tickets):
+            if ticket["ID"] == ID:
+                with open("tickets.json",'w') as f:
+                    del tickets[iticket]
+                    json_format = {"tickets": tickets}
+                    json.dump(json_format,f)
+                    return
 
 # מחיקת כרטיס והחזרת הכסף ללקוח
-def deleting_a_card(id):
+def deleting_a_ticket(ID):
     reader = load_tickets()
     for item in reader:
-        if item[0] == id:
-            price = float(item[1])
+        if item["ID"] == ID:
+            price = float(item["price"])
             reducing_amount_from_budget(price)
-            print(f"ticket ID: {id} from item{2} to {3} Successfully canceled!!\n"
+            removing_ticket_from_tickets(ID)
+            print(f"ticket ID: {ID} from {item["origin_point"]} to {item["destination"]} Successfully canceled!!\n"
                   f"Credit to your account {price}\n"
                   "Thank you and see you later!!!")
-
-
+            return
+        return print('ticket ID dosent match any ticket in system')
+    print('there are no tickets in the system')
