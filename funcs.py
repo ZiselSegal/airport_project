@@ -217,4 +217,9 @@ def deleting_a_card(id):
                   f"Credit to your account {price}\n"
                   "Thank you and see you later!!!")
 
-
+# Card information loading function by ID
+def find_Flight_By_Id(id):
+    all_tickets = load_tickets()
+    for ticket in all_tickets:
+        if ticket[0] == str(id):
+            return ticket
