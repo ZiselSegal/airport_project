@@ -25,7 +25,7 @@ def load_credentials():
 
 #checks if all files needed for project are present and close the program if not return true or false
 def File_existence_check():
-    files_to_check = ['airport_entry_fee.csv','available_flights.json','budget.txt','continents_pricing.csv','credentials.csv','funcs.py','main.py','menu.py','tickets.csv']
+    files_to_check = ['airport_entry_fee.csv','available_flights.json','budget.txt','continents_pricing.csv','credentials.csv','funcs.py','main.py','menu.py','tickets.json']
     for file in files_to_check:
         if not os.path.exists(file):
             print('Error, missing files')
@@ -141,12 +141,14 @@ def save_ticket_info(ID,price,origin_point,destination):
 #function recieves 2 air ports and return true or false based if flight exists in availble flights file
 def check_purchase_status(departure_ap,destination_ap):
     flights = load_available_flights()
+    if len(flights) == 0:
+        print('no flighst are availble currently')
+        return
     for flight in flights:
         if flight["origin_airport"] == departure_ap and flight["destination airport"] == destination_ap:
             print('flight available')
             return True
     print('unavailable flight plz chose flight from the list')
-    show_available_flightlines()
     return False
 
 #function recieves 2 airports and check what continents their in and returns a list with both continents

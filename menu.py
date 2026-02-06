@@ -87,9 +87,10 @@ def customer_menu():
                         fun.add_to_budget(ticket_price)
                         ID = fun.create_ticket_ID()
                         fun.save_ticket_info(ID,ticket_price,point_of_departure,destination_point)
+                        customer_menu()
                     elif yes_or_no == False:
                         print('purchase cancelled')
-                        return
+                        customer_menu()
         case '2':
             main_menu()      
         case '3':
